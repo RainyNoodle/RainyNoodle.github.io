@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8"/>
+    <link rel="icon" type="image/svg+xml" href="/vite.svg"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Memory Card Game</title>
+  <script type="module" crossorigin src="/assets/index-CKpZVr1x.js"></script>
+  <link rel="stylesheet" crossorigin href="/assets/index-D56STzwJ.css">
+</head>
+<body>
+
+<div class="container">
+    <div class="header">
+        <h1>Memory Card Game</h1>
+        <div class="stats">
+            <div class="stat">
+                <div class="stat-label">Moves</div>
+                <div class="stat-value" id="moves"></div>
+            </div>
+
+            <div class="stat">
+                <div class="stat-label">Time</div>
+                <div class="stat-value" id="time"></div>
+            </div>
+
+            <div class="stat">
+                <div class="stat-label">Matches</div>
+                <div class="stat-value" id="matches"></div>
+            </div>
+        </div>
+    </div>
+
+    <div class="game" id="game"></div>
+
+    <div class="reset">
+        <button class="reset-btn" id="resetBtn" >Reset Game</button>
+    </div>
+
+    <div class="modal" id="winModal">
+        <div class="modal-content">
+            <h2>You won!</h2>
+            <p>Moves: <span id="totalMoves"></span></p>
+            <p>Time: <span id="totalTime"></span></p>
+            <button class="reset-btn" id="resetGame">Play Again</button>
+        </div>
+    </div>
+</div>
+</body>
+</html>
