@@ -3,24 +3,79 @@
 <head>
     <meta charset="UTF-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <link rel="icon" href="/assets/favicon-wePHNGSY.ico"/>
     <title>Memory Card Game</title>
-  <script type="module" crossorigin src="/assets/index-B7UQ07B5.js"></script>
-  <link rel="stylesheet" crossorigin href="/assets/index-D56STzwJ.css">
+  <script type="module" crossorigin src="/assets/index-Bl2KBEXQ.js"></script>
+  <link rel="stylesheet" crossorigin href="/assets/index-BhQt0wvN.css">
 </head>
 <body>
 
 <div class="container">
+    <button class="settings-btn btn" id="settingBtn">Settings</button>
+
+    <div class="settings-container" id="settings">
+        <div class="settings-content">
+            <button class="close-btn btn" id="closeSettingsBtn">X</button>
+            <h1>Settings</h1>
+            <div class="controls">
+                <button class="btn" id="changeModeBtn">Change Mode</button>
+                <button class="btn" id="changeDifficultyBtn">Change Difficulty</button>
+                <button class="btn" id="resetBtn">Reset Game</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal" id="modeModal">
+        <div class="modal-content">
+            <h1>Select Game Mode</h1>
+            <div class="mode-buttons">
+                <button class="btn" id="singlePlayerBtn">
+                    <span class="mode-btn-icon">
+                        <img src="data:image/svg+xml,%3c?xml%20version='1.0'%20encoding='utf-8'?%3e%3c!--%20Uploaded%20to:%20SVG%20Repo,%20www.svgrepo.com,%20Generator:%20SVG%20Repo%20Mixer%20Tools%20--%3e%3csvg%20width='800px'%20height='800px'%20viewBox='0%200%2016%2016'%20fill='none'%20xmlns='http://www.w3.org/2000/svg'%3e%3cpath%20d='M8%207C9.65685%207%2011%205.65685%2011%204C11%202.34315%209.65685%201%208%201C6.34315%201%205%202.34315%205%204C5%205.65685%206.34315%207%208%207Z'%20fill='%23000000'/%3e%3cpath%20d='M14%2012C14%2010.3431%2012.6569%209%2011%209H5C3.34315%209%202%2010.3431%202%2012V15H14V12Z'%20fill='%23000000'/%3e%3c/svg%3e" alt="single">
+                    </span>
+                    <span class="mode-btn-title">Single Player</span>
+                </button>
+                <button class="btn" id="twoPlayersBtn">
+                    <span class="mode-btn-icon">
+                        <img src="data:image/svg+xml,%3c?xml%20version='1.0'%20encoding='utf-8'?%3e%3c!--%20Uploaded%20to:%20SVG%20Repo,%20www.svgrepo.com,%20Generator:%20SVG%20Repo%20Mixer%20Tools%20--%3e%3csvg%20width='800px'%20height='800px'%20viewBox='0%200%2016%2016'%20fill='none'%20xmlns='http://www.w3.org/2000/svg'%3e%3cpath%20d='M8%203.5C8%204.88071%206.88071%206%205.5%206C4.11929%206%203%204.88071%203%203.5C3%202.11929%204.11929%201%205.5%201C6.88071%201%208%202.11929%208%203.5Z'%20fill='%23000000'/%3e%3cpath%20d='M3%208C1.34315%208%200%209.34315%200%2011V15H8V8H3Z'%20fill='%23000000'/%3e%3cpath%20d='M13%208H10V15H16V11C16%209.34315%2014.6569%208%2013%208Z'%20fill='%23000000'/%3e%3cpath%20d='M12%206C13.1046%206%2014%205.10457%2014%204C14%202.89543%2013.1046%202%2012%202C10.8954%202%2010%202.89543%2010%204C10%205.10457%2010.8954%206%2012%206Z'%20fill='%23000000'/%3e%3c/svg%3e" alt="multi">
+                    </span>
+                    <span class="mode-btn-title">Two Players</span>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <div class="difficulty-modal modal" id="difficultyModal">
+        <div class="modal-content">
+            <h1>Select Game Difficulty</h1>
+            <div class="diff-buttons">
+                <button class="btn" id="easyDiffBtn">
+                    <span class="mode-btn-icon">
+                        <img src="data:image/svg+xml,%3c?xml%20version='1.0'%20encoding='utf-8'?%3e%3c!--%20Uploaded%20to:%20SVG%20Repo,%20www.svgrepo.com,%20Generator:%20SVG%20Repo%20Mixer%20Tools%20--%3e%3csvg%20width='800px'%20height='800px'%20viewBox='0%200%2016%2016'%20fill='none'%20xmlns='http://www.w3.org/2000/svg'%3e%3cpath%20fill-rule='evenodd'%20clip-rule='evenodd'%20d='M16%208C16%2012.4183%2012.4183%2016%208%2016C3.58172%2016%200%2012.4183%200%208C0%203.58172%203.58172%200%208%200C12.4183%200%2016%203.58172%2016%208ZM7%205.5C7%206.32843%206.32843%207%205.5%207C4.67157%207%204%206.32843%204%205.5C4%204.67157%204.67157%204%205.5%204C6.32843%204%207%204.67157%207%205.5ZM10.5%207C11.3284%207%2012%206.32843%2012%205.5C12%204.67157%2011.3284%204%2010.5%204C9.67157%204%209%204.67157%209%205.5C9%206.32843%209.67157%207%2010.5%207ZM4%209C4%2011.2091%205.79086%2013%208%2013C10.2091%2013%2012%2011.2091%2012%209H4Z'%20fill='%23000000'/%3e%3c/svg%3e" alt="easy">
+                    </span>
+                    <span class="mode-btn-title">Easy</span>
+                </button>
+                <button class="btn" id="hardDiffBtn">
+                    <span class="mode-btn-icon">
+                        <img src="data:image/svg+xml,%3c?xml%20version='1.0'%20encoding='utf-8'?%3e%3c!--%20Uploaded%20to:%20SVG%20Repo,%20www.svgrepo.com,%20Generator:%20SVG%20Repo%20Mixer%20Tools%20--%3e%3csvg%20width='800px'%20height='800px'%20viewBox='0%200%2016%2016'%20fill='none'%20xmlns='http://www.w3.org/2000/svg'%3e%3cpath%20fill-rule='evenodd'%20clip-rule='evenodd'%20d='M14.1754%2013.0877C14.4514%2012.7518%2014.7037%2012.3889%2014.9282%2012C17.1373%208.17365%2015.8263%203.28093%2012%201.07179C8.17365%20-1.13735%203.28093%200.173652%201.07179%203.99999C-0.643932%206.97171%20-0.236372%2010.5867%201.82376%2013.0881L1.24293e-05%2014V16H7.84579C7.94371%2016.0018%208.04156%2016.0018%208.1393%2016H16V14L14.1754%2013.0877ZM8.99995%2014C8.99995%2013.4478%208.55229%2013.0003%208.00015%2013.0004L7.50093%2013.0005C6.82015%2013.001%206.12934%2012.8275%205.4999%2012.4641C3.58673%2011.3595%202.93123%208.91315%204.0358%206.99998L5.76785%207.99998C5.21557%208.95657%205.54332%2010.1797%206.4999%2010.732C6.8169%2010.915%207.16027%2011.0008%207.49901%2011.0005L7.99976%2011.0004C9.65662%2011.0001%2010.9999%2012.3431%2011%2014H8.99995ZM8.38397%205.33493C7.96975%206.05237%207.05237%206.29818%206.33493%205.88397C5.61749%205.46975%205.37168%204.55237%205.78589%203.83493C6.2001%203.11749%207.11749%202.87168%207.83493%203.28589C8.55237%203.7001%208.79818%204.61749%208.38397%205.33493ZM10.1651%209.24999C10.8825%209.66421%2011.7999%209.41839%2012.2141%208.70095C12.6283%207.98352%2012.3825%207.06613%2011.6651%206.65192C10.9476%206.2377%2010.0302%206.48352%209.61602%207.20095C9.2018%207.91839%209.44762%208.83578%2010.1651%209.24999Z'%20fill='%23000000'/%3e%3c/svg%3e" alt="hard">
+                    </span>
+                    <span class="mode-btn-title">Hard</span>
+                </button>
+            </div>
+        </div>
+    </div>
+
     <div class="header">
         <h1>Memory Card Game</h1>
-        <div class="stats">
-            <div class="stat">
-                <div class="stat-label">Moves</div>
-                <div class="stat-value" id="moves"></div>
-            </div>
-
+        <div class="stats" id="singlePlayerStats">
             <div class="stat">
                 <div class="stat-label">Time</div>
                 <div class="stat-value" id="time"></div>
+            </div>
+
+            <div class="stat">
+                <div class="stat-label">Moves</div>
+                <div class="stat-value" id="moves"></div>
             </div>
 
             <div class="stat">
@@ -28,20 +83,43 @@
                 <div class="stat-value" id="matches"></div>
             </div>
         </div>
+
+        <div class="stats" id="twoPlayersStats" style="display: none;">
+            <div class="stat" id="player1Stat">
+                <div class="stat-label">Player 1</div>
+                <div class="stat-value" id="player1Score">0</div>
+                <div class="player-turn-indicator active" id="player1Indicator">⬤</div>
+            </div>
+
+            <div class="stat">
+                <div class="stat-label">Moves</div>
+                <div class="stat-value" id="totalMovesTwo">0</div>
+            </div>
+
+            <div class="stat" id="player2Stat">
+                <div class="stat-label">Player 2</div>
+                <div class="stat-value" id="player2Score">0</div>
+                <div class="player-turn-indicator" id="player2Indicator">⬤</div>
+            </div>
+        </div>
     </div>
 
     <div class="game" id="game"></div>
 
-    <div class="reset">
-        <button class="reset-btn" id="resetBtn" >Reset Game</button>
-    </div>
-
     <div class="modal" id="winModal">
         <div class="modal-content">
-            <h2>You won!</h2>
-            <p>Moves: <span id="totalMoves"></span></p>
-            <p>Time: <span id="totalTime"></span></p>
-            <button class="reset-btn" id="resetGame">Play Again</button>
+            <div id="singlePlayerResults">
+                <h2>You won!</h2>
+                <p>Moves: <span id="totalMoves"></span></p>
+                <p>Time: <span id="totalTime"></span></p>
+            </div>
+            <div id="twoPlayersResults" style="display: none;">
+                <h2 class="winner" id="winnerName"></h2>
+                <p>Player 1: <span id="finalScore1"></span> points</p>
+                <p>Player 2: <span id="finalScore2"></span> points</p>
+                <p>Total moves: <span id="finalTotalMoves"></span></p>
+            </div>
+            <button class="btn" id="resetGame">Play Again</button>
         </div>
     </div>
 </div>
